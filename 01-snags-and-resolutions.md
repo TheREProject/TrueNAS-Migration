@@ -42,7 +42,7 @@
     - System > Advanced Settings > Storage > System Dataset Pool. Configure this and choose a different pool or boot pool.
 
 - Once that is finished fire up a terminal and import the pool into the CLI with the new name.
-  -zpool import original_name new_name
+  - zpool import original_name new_name
     -(replace original_name and new_name, respectively)
 
   
@@ -58,7 +58,7 @@
   - This is resolved by manually opening the .JSON file in notepad, copying the key, and pasting it in the option to enter the key manually.
  
 ## Do not add disks as strpe to a RAID 0 pool    
-- Yet another snag. Adding a disk with striped data (RAID) to the current pool was not a good idea.
+Yet another snag. Adding a disk with striped data (RAID) to the current pool was not a good idea.
 
 While the pool now has more space, there is no way to properly arrange the data. As both disks are treated quite literally as one pool. Because data is spread across both disks, failure/removal of one will cause the pool to be inaccessible. 
 
@@ -66,9 +66,9 @@ Had to backup all critical data before removing disk 1 and create a unique pool 
 
 Even after that removal, the original pool needed to be deleted and recreated too. Which was ok because all important data was backed up anyway.
 
-**In the future, unless another disk is purchased for pool redundancy, DO NOT ADD A DISK TO A CURRENT POOL. CREATE A NEW POOL AND ADD THE DISK TO THAT NEW POOL.**
+**In the future, unless another disk is used for pool redundancy, DO NOT ADD A DISK TO A CURRENT POOL. CREATE A NEW POOL AND ADD THE DISK TO THAT NEW POOL.**
 
 # Data transfer speeds issue
-Noticed during the backup that transfer speeds from NAS to PCs were very slow. Usually around 18 or so MB/s (or After backing up the critical data and recreating the pool
+Noticed during the backup that transfer speeds from NAS to PCs were very slow. Usually around 18 MB/s.
 
 The resolution is covered in another document.
