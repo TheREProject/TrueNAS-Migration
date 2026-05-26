@@ -5,7 +5,7 @@
 - During Proxmox VMs Backup, the original backup attempted to backup the OS AND Data disks.
   - Under normal circumstances, this is fine. However, there are not enough resources for a full offsite backup at this time. You must disable backups for the data disks in their advanced options under the VM’s hardware section.
   
-- During the Jellyfin backup, the backup directory was inaccessible. This is a permissions issue.
+- During the Jellyfin backup, the backup directory was inaccessible. This is a permissions issue. The actual owner is not root or a linux user. Rather, the jellyfin admin is the owner (different from the Linux admins.)
   - This was solved by changing ownership of the directory to the current user and copying the contents out of the folder. Original permissions were reassigned.
  
 ## Hardware Snag    
@@ -15,6 +15,7 @@
 ## Network Snag
 - Proxmox successfully booted. But there was no network activity.
   - This is because we migrated the hardware to another motherboard, and by extension, another NIC. This needs to be configured by confirming the NIC is enabled in the BIOS and Proxmox.
+  - After a motherboard swap, the NIC identity changes. Proxmox loses the previous network configuration — requiring manual interface reassignment.
   - Once that is complete, you can assign IP Addressing, either keeping the current setup, or adjusting for a new subnet if applicable.
   - Important commands to remember
     - ip a (shows all network interfaces and their LAN IPs)
