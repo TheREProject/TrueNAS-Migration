@@ -35,7 +35,7 @@
   - (e.g 2) scsi1: /dev/disk/by-id/ata-WDC-YYYY,serial=UNIQUE456   
 
 ## Unable to add disk to TrueNAS Pool
-- With the serial key issues resolved, another issue arose. Disk 1 could not be added to the current Pool. This is because Scale does not accept Pools with whitespace in the name (Big Pool) The previous name was grandfathered in. 
+- With the serial key issues resolved, another issue arose. Disk 1 could not be added to the current Pool. This is because Scale does not accept Pools with white space in the name (Big Pool) The previous name was grandfathered in. 
 
   - To resolve this, we need to rename the pool (which may prevent future issues)
   - **NOTE:** If your system-dataset is on the pool, its a good idea to move it back to a different pool, or perhaps the boot pool. 
@@ -58,7 +58,7 @@
 - Yet another snag arrived when attempting to unlock the encrypted datasets after the renaming. The likely cause may be tied to the key file containing the previous pool name. 
   - This is resolved by manually opening the .JSON file in notepad, copying the key, and pasting it in the option to enter the key manually.
  
-## Do not add disks as strpe to a RAID 0 pool    
+## Do not add disks as stripe to a RAID 0 pool    
 Yet another snag. Adding a disk with striped data (RAID) to the current pool was not a good idea.
 
 While the pool now has more space, there is no way to properly arrange the data. As both disks are treated quite literally as one pool. Because data is spread across both disks, failure/removal of one will cause the pool to be inaccessible. 
